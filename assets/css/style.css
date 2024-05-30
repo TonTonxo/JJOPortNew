@@ -3256,6 +3256,15 @@ canvas {
   margin: 0 !important;
 }
 
+@media only screen and (max-width: 479px) {
+  .hero-block{
+    padding: 30px 40px 30px 40px;
+  }
+  .hero-block span{
+    font-size: 40px;
+  }
+}
+
 .info-box-item{
   display: flex;
   align-items: center;
