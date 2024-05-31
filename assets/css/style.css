@@ -1015,6 +1015,12 @@ hr {
   background-color: #070d1b;
 }
 
+@media only screen and (max-width: 500px){
+  .st-hero.st-style2{
+    padding-top: 50px;
+  }
+}
+
 .st-hero.st-style2 .container {
   position: relative;
   z-index: 11;
@@ -3403,8 +3409,8 @@ canvas {
 }
 @media only screen and (max-width: 1199px) {
   .project-item.style-two .project-content {
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 @media only screen and (max-width: 375px) {
