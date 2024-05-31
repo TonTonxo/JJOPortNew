@@ -21,6 +21,19 @@
 </head>
 
 <body id="home" class="st-get-sidebar">
+  <!-- Preloader -->
+<div class="preloader">
+  <div class="preloader-animation">
+    <div class="text-container">
+      <p class="preloader-text" id="text-1">Welcome to</p>
+      <p class="preloader-text" id="text-2"> <strong>J</strong>ohn <strong>J</strong>erico <strong>O</strong>perio's</p>
+      <p class="preloader-text" id="text-3">Domain</p>
+    </div>
+  </div>
+</div>
+<!-- Preloader end -->  
+
+
   <!-- Start Header Section -->
   <header class="st-site-header st-style2 st-sticky-header">
     <div class="st-main-header">
@@ -260,12 +273,12 @@
             <div class="project-content">
               <span class="sub-title">Design</span>
               <h3>
-                <a href="product-details.html">Google Ads</a>
+                <a href="google-ads.html">Google Ads</a>
               </h3>
             </div>
             <div class="project-image">
               <img src="assets/img/newportfolio/GOOGLE ADS/25.webp" alt="Project" />
-              <a class="details-btn" href="product-details.html">
+              <a class="details-btn" href="google-ads.html">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
               </a>
             </div>
@@ -976,5 +989,84 @@
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/particles.min.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const texts = [
+        document.getElementById('text-1'),
+        document.getElementById('text-2'),
+        document.getElementById('text-3')
+      ];
+      const gif = document.getElementById('loading-gif');
+      const textContainer = document.querySelector('.text-container');
+      const textDisplayDuration = 0.8; // Duration for each text to display
+      const totalTextDuration = 1 * textDisplayDuration; // Total duration for all texts
+      const staggerDelay = 0.3; // Delay between each text element
+      const preloader = document.querySelector('.preloader');
+
+      let timeline = gsap.timeline();
+
+      // Animate each text sequentially with a staggered effect for smoother appearance
+      texts.forEach((text, index) => {
+        timeline.to(text, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8, // Longer duration for smoother appearance
+          ease: "power2.out", // Smoother easing function
+          delay: index * staggerDelay // Add staggered delay
+        });
+      });
+
+      // Form a single sentence
+      timeline.to(textContainer, {
+        display: 'block',
+        duration: 0.8
+      }, `-=${textDisplayDuration}`);
+
+      // Hide text before showing GIF
+      timeline.to(texts, {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out", // Use a smoother easing function
+      });
+
+      // Center the GIF on the site
+      timeline.to(gif, {
+        display: 'block',
+        opacity: 1,
+        duration: 0.1,
+        ease: "power2.out",
+        onComplete: function() {
+
+          setTimeout(function() {
+            timeline.to(preloader, {
+              opacity: 0,
+              duration: 0.5, 
+              onComplete: function() {
+                
+                preloader.style.display = 'none';
+              }
+            });
+          }, 100); 
+        }
+      });
+
+      // Animate all texts to disappear simultaneously with a faster duration
+      timeline.to(texts, {
+        opacity: 0,
+        y: -30,
+        duration: 0.6,
+        ease: "power2.out", // Use a smoother easing function
+        delay: totalTextDuration
+      });
+
+      window.addEventListener('load', function() {
+        timeline.play();
+      });
+    });
+  </script>
+
 </body>
 </html>
