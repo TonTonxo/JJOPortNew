@@ -3306,8 +3306,6 @@ canvas {
 
 .project-content {
   margin-bottom: 45px;
-  padding-left: 60px;
-  padding-right: 60px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .project-content {
@@ -3404,8 +3402,6 @@ canvas {
 }
 .project-item.style-two .project-content {
   margin-bottom: 0;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 @media only screen and (max-width: 1199px) {
   .project-item.style-two .project-content {
