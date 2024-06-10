@@ -3296,6 +3296,17 @@ canvas {
   text-align: center;
 }
 
+.info-box-item > a {
+  margin-right: 15px;
+  color: black;
+  width: 40px;
+  height: 40px;
+  background: #c9f31d;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+
 .info-box-item .box-item-content span{
   color: #3f4551;
 }
