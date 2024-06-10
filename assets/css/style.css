@@ -4465,6 +4465,16 @@ a.theme-btn.style-three {
   height: 100vh;
   background-color: white;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader .preloader-animation, .preloader .preloader-animation-2 {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -4499,6 +4509,10 @@ a.theme-btn.style-three {
 
 .preloader.fade-out {
   animation: fadeOut 0.5s ease forwards;
+}
+.gif-container {
+  display: none;
+  opacity: 0;
 }
 
 

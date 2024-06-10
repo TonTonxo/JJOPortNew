@@ -22,15 +22,26 @@
 
 <body id="home" class="st-get-sidebar">
   <!-- Preloader -->
-<div class="preloader">
-  <div class="preloader-animation">
-    <div class="text-container">
-      <p class="preloader-text text-thin" id="text-1">Welcome to</p>
-      <p class="preloader-text" id="text-2"> <strong>J</strong>ohn <strong>J</strong>erico <strong>O</strong>perio's</p>
-      <p class="preloader-text text-thin" id="text-3">Domain</p>
+  <div class="preloader">
+    <div class="preloader-animation">
+      <div class="text-container">
+        <p class="preloader-text text-thin" id="text-1">Welcome to</p>
+        <p class="preloader-text" id="text-2"> <strong>J</strong>ohn <strong>J</strong>erico <strong>O</strong>perio's</p>
+        <p class="preloader-text text-thin" id="text-3">Domain</p>
+      </div>
+    </div>
+    <div class="preloader-animation-2">
+      <div class="gif-container" id="gif-container">
+        <lord-icon
+            src="https://cdn.lordicon.com/vivtfghy.json"
+            trigger="in"
+            delay="2000"
+            state="in-reveal"
+            style="width:250px;height:250px">
+        </lord-icon>
+      </div>
     </div>
   </div>
-</div>
 <!-- Preloader end -->  
 
 
@@ -499,19 +510,22 @@
               </div>
               <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                 <div class="skill-item wow fadeInUp delay-0-2s">
-                  <img src="assets/img/skills/65eae689ace95f5017dc17a0_Logo-main.svg" alt="">
+                  <img src="assets/img/skills/65eae689ace95f5017dc17a0_Logo-main.svg" alt="" style="width: 100px; margin-bottom: 40px;">
                   <h5>Synthesia</h5>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                 <div class="skill-item wow fadeInUp delay-0-2s">
-                  <img src="assets/img/skills/65fc7fc5f104846a5dcd451b_Jasper Logo (latest).svg" alt="">
-                  <h5>Jasper</h5>
+                  <div>
+                    <img src="assets/img/skills/65fc7fc5f104846a5dcd451b_Jasper Logo (latest).svg" alt="" style="width: 70px; margin-bottom: 50px;">
+                    <h5>Jasper</h5>
+                  </div>
+
                 </div>
               </div>
               <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                 <div class="skill-item wow fadeInUp delay-0-2s">
-                  <img src="assets/img/skills/Google_Gemini_logo.svg.png" alt="">
+                  <img src="assets/img/skills/Google_Gemini_logo.svg.png" alt="" style="width: 70px; margin-bottom: 40px;">
                   <h5>Gemini</h5>
                 </div>
               </div>
@@ -1095,6 +1109,7 @@
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/particles.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
@@ -1105,15 +1120,14 @@
         document.getElementById('text-2'),
         document.getElementById('text-3')
       ];
-      const gif = document.getElementById('loading-gif');
+      const gifContainer = document.getElementById('gif-container');
       const textContainer = document.querySelector('.text-container');
       const textDisplayDuration = 0.8; // Duration for each text to display
-      const totalTextDuration = 1 * textDisplayDuration; // Total duration for all texts
       const staggerDelay = 0.3; // Delay between each text element
       const preloader = document.querySelector('.preloader');
-
+  
       let timeline = gsap.timeline();
-
+  
       // Animate each text sequentially with a staggered effect for smoother appearance
       texts.forEach((text, index) => {
         timeline.to(text, {
@@ -1124,50 +1138,39 @@
           delay: index * staggerDelay // Add staggered delay
         });
       });
-
+  
       // Form a single sentence
       timeline.to(textContainer, {
         display: 'block',
         duration: 0.8
       }, `-=${textDisplayDuration}`);
-
-      // Hide text before showing GIF
+  
+      // Animate all texts to disappear simultaneously
       timeline.to(texts, {
         opacity: 0,
         duration: 0.3,
         ease: "power2.out", // Use a smoother easing function
       });
-
-      // Center the GIF on the site
-      timeline.to(gif, {
+  
+      // Show the GIF container after text disappears
+      timeline.to(gifContainer, {
         display: 'block',
         opacity: 1,
-        duration: 0.1,
+        duration: 1.9,
         ease: "power2.out",
         onComplete: function() {
-
           setTimeout(function() {
-            timeline.to(preloader, {
+            gsap.to(preloader, {
               opacity: 0,
-              duration: 0.4, 
+              duration: 0.5, 
               onComplete: function() {
-                
                 preloader.style.display = 'none';
               }
             });
           }, 100); 
         }
       });
-
-      // Animate all texts to disappear simultaneously with a faster duration
-      timeline.to(texts, {
-        opacity: 0,
-        y: -30,
-        duration: 0.6,
-        ease: "power2.out", // Use a smoother easing function
-        delay: totalTextDuration
-      });
-
+  
       window.addEventListener('load', function() {
         timeline.play();
       });
