@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Laralink">
   <!-- Page Title -->
-  <title>JJO</title>
+  <title>John Operio's Portfolio</title>
   <!-- Favicon Icon -->
-  <link rel="icon" href="assets/img/favicon.png" />
+  <link rel="icon" href="assets/img/favicon.ico" />
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/fontawesome.css" />
@@ -35,7 +35,6 @@
         <lord-icon
             src="https://cdn.lordicon.com/vivtfghy.json"
             trigger="in"
-            delay="2000"
             state="in-reveal"
             style="width:250px;height:250px">
         </lord-icon>
@@ -70,7 +69,7 @@
                 </li>
                 <li>
                   <i class="fa fa-envelope"></i>
-                  <a href="mailto:johnoperio@gmail.com">Email me now!</a>
+                  <a href="mailto:johnoperio@gmail.com" style="text-transform: lowercase !important;">johnoperio@gmail.com</a>
                 </li>
               </ul>
               <div class="st-hero-btn">
@@ -89,7 +88,8 @@
     <div class="container">
       <div class="st-hero-text">
         <h1>Hi, I am <span>John Operio</span></h1>
-        <p>I am a frontend web developer. I can provide clean code and pixel perfect design. <br>I also make website more & more interactive with web animations.</p>
+        <p>I am a seasoned full-stack software developer and multi-media specialist with 8 years of diverse experience in the tech and marketing industries. <br>
+          My career has been marked by a blend of technical expertise and creative vision, allowing me to thrive in dynamic and fast-paced environments.</p>
       </div>
       <div class="hero-widget">
         <div class="hero-block">
@@ -146,9 +146,12 @@
           <div class="st-vertical-middle">
             <div class="st-vertical-middle-in">
               <div class="st-text-block st-style1">
-                <h2 class="st-text-block-title">Expert <span>Solutions</span> <br> For Digital Prodcuts</h2>
+                <h2 class="st-text-block-title">Creative Tech-Driven<span>Solutions</span> <br> For Your Digital Needs</h2>
                 <div class="st-text-block-text">
-                  <p>I am a Graphic Designer specializing in digital branding. Visual design aims to captivate, inspire, evoke desires, and motivate individuals to respond to messages, ultimately aiming to create a positive impact.</p>
+                  <p>
+                    I am passionate about blending technology and creativity to solve complex problems and drive innovation. My ability to navigate both the technical and creative aspects of projects allows me to deliver comprehensive solutions that meet the company's needs and exceed their expectations. 
+                    I am committed to continuous learning and staying updated on industry trends to ensure my skills and strategies remain cutting-edge.
+                  </p>
                 </div>
                 <ul class="st-text-block-details st-mp0">
                   <li class="info-box-item">
@@ -527,7 +530,7 @@
               </div>
               <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                 <div class="skill-item wow fadeInUp delay-0-2s">
-                  <img src="assets/img/skills/65eae689ace95f5017dc17a0_Logo-main.svg" alt="" style="width: 100px; margin-bottom: 40px;">
+                  <img src="assets/img/skills/65eae689ace95f5017dc17a0_Logo-main.svg" alt="" style="width: 100px; margin-bottom: 20px; margin-top: 20px;">
                   <h5>Synthesia</h5>
                 </div>
               </div>
@@ -819,7 +822,7 @@
                   <div class="st-quote"><img src="assets/img/icon/quote.png" alt="quote"></div>
                 </div>
                 <div class="st-testimonial-info">
-                  <div class="st-testimonial-img"><img src="assets/img/client/client1.png" alt="client1"></div>
+                  <div class="st-testimonial-img"><img src="assets/img/client/WhatsApp Image 2024-06-10 at 22.48.00_30f45fc7.jpg" alt="client1" style="border-radius: 50%;"></div>
                   <div class="st-testimonial-meta">
                     <h4 class="st-testimonial-name">Angelo Garcia</h4>
                     <div class="st-testimonial-designation">Functional Lead</div>
@@ -883,14 +886,13 @@
             <div class="section-title mb-30">
               <span class="sub-title mb-15">Get In Touch</span>
               <h2>
-                Let’s Talk For your <span>Next Projects</span>
+                <span>Hire Me!</span>
               </h2>
               <p>
-                Sed ut perspiciatis unde omnin natus totam rem aperiam eaque
-                inventore veritatis
+                With 8 years of expertise in full-stack development, digital marketing, and multimedia content creation, I deliver innovative, tech-driven solutions that transform businesses across industries, from digital marketing agency, big tech to manufacturing.
               </p>
             </div>
-            <h6>Main Office</h6>
+            <h6>Contact Information</h6>
             <div class="widget_contact_info mb-35">
               <ul>
                 <li>
@@ -1142,9 +1144,27 @@
       const textDisplayDuration = 0.8; // Duration for each text to display
       const staggerDelay = 0.3; // Delay between each text element
       const preloader = document.querySelector('.preloader');
-  
+
       let timeline = gsap.timeline();
-  
+
+      // Show the GIF container first
+      timeline.to(gifContainer, {
+        display: 'block',
+        opacity: 1,
+        duration: 1.9,
+        ease: "power2.out"
+      });
+
+      // Fade out the GIF container
+      timeline.to(gifContainer, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: function() {
+          gifContainer.style.display = 'none';
+        }
+      }, "+=0.5"); // Add delay to ensure the GIF is visible for a bit before fading out
+
       // Animate each text sequentially with a staggered effect for smoother appearance
       texts.forEach((text, index) => {
         timeline.to(text, {
@@ -1153,45 +1173,29 @@
           duration: 0.5, // Longer duration for smoother appearance
           ease: "power2.out", // Smoother easing function
           delay: index * staggerDelay // Add staggered delay
-        });
+        }, "-=0.3"); // Adjust timing to make the text appear as the GIF fades out
       });
-  
+
       // Form a single sentence
       timeline.to(textContainer, {
         display: 'block',
         duration: 0.8
       }, `-=${textDisplayDuration}`);
-  
-      // Animate all texts to disappear simultaneously
-      timeline.to(texts, {
+
+      // Fade out the preloader after text is displayed
+      timeline.to(preloader, {
         opacity: 0,
-        duration: 0.3,
-        ease: "power2.out", // Use a smoother easing function
-      });
-  
-      // Show the GIF container after text disappears
-      timeline.to(gifContainer, {
-        display: 'block',
-        opacity: 1,
-        duration: 1.9,
-        ease: "power2.out",
+        duration: 0.5, 
         onComplete: function() {
-          setTimeout(function() {
-            gsap.to(preloader, {
-              opacity: 0,
-              duration: 0.5, 
-              onComplete: function() {
-                preloader.style.display = 'none';
-              }
-            });
-          }, 100); 
+          preloader.style.display = 'none';
         }
       });
-  
+
       window.addEventListener('load', function() {
         timeline.play();
       });
     });
+
   </script>
 
 </body>

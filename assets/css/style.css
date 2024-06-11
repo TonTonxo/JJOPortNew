@@ -4521,11 +4521,11 @@ a.theme-btn.style-three {
 .preloader.fade-out {
   animation: fadeOut 0.5s ease forwards;
 }
+
 .gif-container {
   display: none;
   opacity: 0;
 }
-
 
 .gif-container {
   display: flex;
